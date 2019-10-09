@@ -12,7 +12,7 @@ jobs:
           command: 'curl -s https://raw.githubusercontent.com/clean-docker/Magento2/master/init | bash -s MYMAGENTO2 clone'
       - run:
           name: Set Up Magento Credentials
-          command: 'composer config -a http-basic.repo.magento.com ${MG2_USERNAME} ${MG2_PASSWORD}'
+          command: 'composer init && composer config -a http-basic.repo.magento.com ${MG2_USERNAME} ${MG2_PASSWORD}'
       - run:
           name: Install Magento
           command: 'cd MYMAGENTO2 && install-magento2'
