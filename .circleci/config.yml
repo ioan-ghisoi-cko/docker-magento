@@ -9,7 +9,10 @@ jobs:
       - checkout
       - run:
           name: Install Magento
-          command: 'install-magento2'
+          command: 'curl -s https://raw.githubusercontent.com/clean-docker/Magento2/master/init | bash -s MYMAGENTO2 clone'
+      - run:
+          name: Install Magento
+          command: 'cd MYMAGENTO2 && install-magento2'
   magento22:
     docker:
       - image: circleci/python:3.6-jessie
