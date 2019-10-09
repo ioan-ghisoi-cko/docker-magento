@@ -3,9 +3,13 @@ version: 2
 jobs:
   magento21:
     docker:
-      - image: circleci/python:3.6-jessie
+      - image: rafaelcgstz/magento2
+      
     steps:
       - checkout
+      - run:
+          name: Install Magento
+          command: 'install-magento2'
   magento22:
     docker:
       - image: circleci/python:3.6-jessie
