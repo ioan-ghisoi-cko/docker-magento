@@ -10,7 +10,7 @@ jobs:
       
   magento22:
     docker:
-      - image: circleci/cci-demo-docker-primary:0.0.2
+      - image: rafaelcgstz/magento2
     steps:
       - checkout 
       # This should go into custom primary image, here's only for the sake of explanation
