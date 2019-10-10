@@ -1,27 +1,14 @@
 version: 2
-
 jobs:
-  magento21:
+  build:
     docker:
       - image: circleci/node:9.4.0
-      
+    branches:
+      only:
+        - circleci
     steps:
       - checkout
-      
-  magento22:
-    docker:
-      - image: circleci/node:9.4.0
-    steps:
-      - checkout 
-      # This should go into custom primary image, here's only for the sake of explanation
+      - setup_remote_docker
       - run:
-          name: UP
-          command: 'docker-compose up -d'
-
-workflows:
-  version: 2
-
-  my_workflows:
-    jobs:
-      - magento21
-      - magento22
+          name: Start container and verify it's working
+          command: docker-compose up --d
