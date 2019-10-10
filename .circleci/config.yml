@@ -16,7 +16,7 @@ jobs:
       # This should go into custom primary image, here's only for the sake of explanation
       - run:
           name: Start container and verify it's asd
-          command: docker-compose up --d
+          command: docker-compose up -d
 
 workflows:
   version: 2
