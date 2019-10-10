@@ -10,13 +10,13 @@ jobs:
       
   magento22:
     docker:
-      - image: circleci/node:9.4.0
+      - image: ./developer/Dockerfile
     steps:
       - checkout 
       # This should go into custom primary image, here's only for the sake of explanation
       - run:
           name: Start container and verify it's asd
-          command: docker-compose up -d
+          command: pwd
 
 workflows:
   version: 2
