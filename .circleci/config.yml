@@ -31,7 +31,7 @@ jobs:
             chmod +x /usr/local/bin/docker-compose
       - run:
           name: UP
-          command: 'export DOCKER_HOST=127.0.0.1 && docker-compose up -d'
+          command: 'export DOCKER_HOST=127.0.0.1:237 && docker-compose up -d'
 
 workflows:
   version: 2
