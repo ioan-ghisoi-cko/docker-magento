@@ -3,24 +3,26 @@ version: 2
 jobs:
   magento21:
     docker:
-      - image: ubuntu:16.04
+      - image: rafaelcgstz/magento2
       
     steps:
       - checkout
-      - run:
-          name: Install Magento
-          command: 'curl -s https://raw.githubusercontent.com/clean-docker/Magento2/master/init | bash -s MYMAGENTO2 clone'
-      - run:
-          name: Set Up Magento Credentials
-          command: 'mv auth.json ~/.composer/ && composer init --no-interaction && composer config -a http-basic.repo.magento.com ${MG2_USERNAME} ${MG2_PASSWORD}'
-      - run:
-          name: Install Magento
-          command: 'cd MYMAGENTO2 && install-magento2'
+      
   magento22:
     docker:
-      - image: circleci/python:3.6-jessie
+      - image: rafaelcgstz/magento2
     steps:
       - checkout 
+      - run:
+        name: Install Docker Compose
+          command: |
+            curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
+            chmod +x ~/docker-compose
+            mv ~/docker-compose /usr/local/bin/docker-c
+      - run:
+        name: Image up
+          command: |
+            docker-compose up -d
 
 workflows:
   version: 2
